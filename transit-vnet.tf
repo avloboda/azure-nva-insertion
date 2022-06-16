@@ -52,13 +52,14 @@ resource "azurerm_public_ip" "public-lb-ip" { #Public IP address for the public 
   location            = azurerm_resource_group.transit-vnet-rg.location
   resource_group_name = azurerm_resource_group.transit-vnet-rg.name
   allocation_method   = "Static"
-  sku                 = "Standard"
+  sku                 = "Basic"
 }
 
 resource "azurerm_lb" "public-lb" { #Public facing load balancer 
   name                = "PublicLoadBalancer"
   location            = azurerm_resource_group.transit-vnet-rg.location
   resource_group_name = azurerm_resource_group.transit-vnet-rg.name
+  sku                 = "Basic"
 
   frontend_ip_configuration {
     name                 = "PublicIPAddress"
